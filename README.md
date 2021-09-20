@@ -28,7 +28,7 @@ This document provides guidance on how to setup Postman for testing and working 
 
 [Conclusion](#conclusion)
 
-[Feedback](#feedback-is-welcome)
+[Feedback](#feedback)
 
 [License/Terms of Use](#license/terms-of-use)
 
