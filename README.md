@@ -253,5 +253,13 @@ A few other important ones which are required and important include:
 
 - **x-ms-date**: This represents the date for execution. Paste {{RFC1123time}} as the value for this, as this is also generated on the fly using pre-request script.
 
+If you hover your mouse-pointer over {{authToken}} and {{RFC1123time}}, you shall see they do not have any values set. Do not worry, since the values will be generated and set on the fly. 
 
+Now ensure all is saved and finally, click on the **SEND** button. If you have come thus far, and all values are set correctly, you shall see an output as shown in the image below. Click on the 'Save Response' button and you can save the response with an appropriate name; e.g. in my case, I save Status 200 with "Response 200 OK".
+
+![Image8](postman4.png)
+
+Before you move on, here's a few things you should explore:
+
+1. 
 
