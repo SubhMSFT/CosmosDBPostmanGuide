@@ -5,7 +5,7 @@ Step-by-step guidance for testing Azure Cosmos DB resources using REST APIs with
 
 This document provides guidance on how to setup Postman for testing and working with Azure Cosmos DB resources using REST APIs.
 
-**Versions: **
+**Version History:**
 
 | **Name** | **Title** | **Notes** | **Date** |
 | --- | --- | --- | --- |
