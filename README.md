@@ -327,7 +327,18 @@ Microsoft maintains a comprehensive list of all HTTP Status codes returned by th
 ![Image14](postman10.png)
 
 ## Troubleshooting Common Errors
+Postman provides a very stable environment for testing your REST APIs. If you're encountering errors, here's a CHECK LIST to check one by one:
 
+1. Ensure your environment Variables are set.
+2. Ensure pre-request script is set.
+3. Ensure pre-request script variable values are correctly set.
+4. Ensure you have saved the environment variables.
+5. Ensure you have correctly set the pre-request script at 'Collection' level so that you do not have to set it individually every time for every request that you create.
+6. Ensure you're correctly using the GET, PUT and POST operation as per documentation. Example in 'Offers', Get is a GET, List is a GET, replace is a PUT and Query is a POST.
+7. Ensure you're correctly using the REQUIRED Headers. I once spent an entire night trying to troubleshoot a particular REST API which was failing and tinkered a 1000 places ony to find that one of the REQUIRED Headers is incorrectly set. So check, double-check and triple-check Headers values.
+8. In POST ops, check the format of JSON in Body. If incorrect, it will result in a 400 Error.
+9. If you receive a CORS Error after execution, then go to window bottom right-hand corner and click on 'Select Postman Agent', deselect 'Auto-select' and then click on Desktop Agent.
+![Image15](corserror.png)
 
 ## Conclusion
 This HOWTO explores the steps for setting up and leveraging Postman API platform for performing operations on Microsoft's Azure Cosmos DB resources using REST APIs. The Azure Cosmos DB REST API provides programmatic access to Azure Cosmos DB resources to create, query, and delete databases, document collections, and documents. To perform operations on Azure Cosmos DB resources, you send HTTPS requests with a supported method: GET, POST, PUT, or DELETE to an endpoint that targets a resource collection or a specific resource. You are encouraged to explore all the Ops using Postman and provide feedback, if any.
