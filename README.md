@@ -302,5 +302,18 @@ This is a POST operation, wherein you type in Request URI in format: https://{{D
 
 ![Image10](postman6.png)
 
+Before you click on the **SEND** button, you need to ensure your Headers are set correctly as well. E.g. for creating a Document, if you fire the API call without mentioning the Partition Key for your collection, it will fail. You will need to set:
+
+- **x-ms-documentdb-partitionkey**: this will be in the format, ["whateverisyourpartitionkey"]. E.g. in my collection, \Lastname is the Partition Key. So I have put ["Jobs"] in my example. Common error that you can do include:
+1. Keeping it blank. API call will fail.
+2. Keeping it within quotes only. E.g. "Jobs" is incorrect.
+3. Pasting your PartitionKey. E.g. "Lastname" is incorrect. 
+4. It has to the value of the PartitionKey. Hence, ["Jobs"] is correct. So from my example, here's the correct setting:
+
+![Image11](postman7.png)
+
+
+
+
 
 
