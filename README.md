@@ -259,7 +259,14 @@ Now ensure all is saved and finally, click on the **SEND** button. If you have c
 
 ![Image8](postman4.png)
 
-Before you move on, here's a few things you should explore:
+Before you move on, here's 5 things you should explore:
 
-1. 
+1. Hover your mouse-pointer over {{authToken}} and {{RFC1123time}}. You shall see that both now have values generated. Do not tinker with them.
 
+2. On Body, you can click on Pretty, Raw, Preview options to check the output.
+
+3. Check the time & size of the output parameters. 
+
+4. At the bottom of the screen, you shall see the **Console** which you can pull up and deep dive into timestamps for the operation as it plays out. For example, if you wish to deep dive into Network headers, Request headers, Reponse headers, you can do so. E.g. for my GET operation, I have the output as shown in image below.
+
+![Image9](postman5.png)
