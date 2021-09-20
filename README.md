@@ -202,10 +202,34 @@ Once done, ensure you click on save and exit. You should see "green buttons" nex
 
 ![Image4](collparameters.png)
 
-Now, we're ready to create our REST API requests. If you've reached thus far in the Journey, awesome! 
-Take a much well deserved Coffee Break. 
+Now, we're ready to create our REST API requests. 
+If you've reached thus far in the Journey, awesome! Take a much well deserved Coffee Break. 
 
 ![Image5](coffeebreak.png)
 
 ## Testing Cosmos DB REST APIs
+
+Before we deep-dive into a few of them, here's the [complete list of Common Tasks](https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-tasks-using-the-cosmosdb-rest-api) using Azure Cosmos DB REST APIs from Microsoft documentation site. Request you to go through it to get a 50,000 feet level overview of what are the most commonly performed tasks using REST operations. In total, you can do following **53 operations** in Azure Cosmos DB (as of writing):
+
+- Databases: Create, List, Get, Delete & Query (5 ops)
+- Documents: Create, List, Get, Replace, Delete & Query (6 ops)
+- Collections: Create, List, Get, Delete, Query & Get (Collection Partition Key Ranges) (6 ops)
+- Attachments: Create, Replace, List, Delete & Query (5 ops)
+- Stored Procedure: Create, List, Delete, Execute & Query (5 ops)
+- UDFs: Create, Replace, List, Delete & Query (5 ops)
+- Triggers: Create, Replace, List, Delete & Query (5 ops)
+- Users: Create, List, Get, Replace, Delete & Query (6 ops)
+- Permissions: Create, List, Get, Replace, Delete & Query (6 ops)
+- Offers: Get, List, Replace, Query (4 ops)
+
+Here's a few which I have from my Postman account (see image below). There's 2 **best practices** that I wish to highlight here:
+
+![Image6](postman1.png)
+
+1) Capture the response from the REST API call and save it with a 'Response 200 OK' when it works fine, or with a corresponding Error Code so that you can track it later. You can find the full list of all HTTP Status Codes [here](#http-status-codes). 
+
+2) Capture all HTTP Status Codes as you work through a progression. E.g. in List Users GET operation, I checked whether working with when I had no users, and then I created a user with POST operation, after which I again captured Status Code for one user called "a_user" and then I created a user called "abhijit_user" for which I again captured the GET status code and saved it as 'Response 200 - OK - 2 users'. This gives a lineage to your operations and in case one particular REST API call fails, and you are sharing a Workspace with other developers/users, they can trace the ChangeLog and also see the specific Operations that failed OR resulted in a failed HTTP Status Code.
+
+Let's now see a few ops in action.
+
 
