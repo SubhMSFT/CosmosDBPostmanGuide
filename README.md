@@ -212,6 +212,7 @@ If you've reached thus far in the Journey, awesome! Take a much well deserved Co
 Before we deep-dive into a few of them, here's the [complete list of Common Tasks](https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-tasks-using-the-cosmosdb-rest-api) using Azure Cosmos DB REST APIs from Microsoft documentation site. Request you to go through it to get a 50,000 feet level overview of what are the most commonly performed tasks using REST operations. In total, you can do following **53 operations** in Azure Cosmos DB (as of writing):
 
 | **Resource** | **Common Operation** | **Number of Ops** |
+| --- | --- | --- |
 | **Databases** | Create, List, Get, Delete, Query | 5 |
 | **Documents** | Create, List, Get, Replace, Delete, Query | 6 |
 | **Collections** | Create, List, Get, Delete, Get Partition Key Ranges, Query | 6 |
