@@ -16,7 +16,7 @@ This document provides guidance on how to setup Postman for testing and working 
 
 [Introduction](#Introduction)
 
-[Securing connectivity to ADLS](#securing-connectivity-to-ADLS) 
+[Creating an Azure Cosmos DB Account](#creating-cosmos-db-account) 
 
 [Pattern 1 - Access via Service Principal](#Pattern-1---Access-via-Service-Principal)
 
@@ -32,7 +32,24 @@ This document provides guidance on how to setup Postman for testing and working 
 Azure Cosmos DB is a globally distributed multi-model database that supports the document, graph, and key-value data models. 
 
 For an in-depth coverage of Azure Cosmos DB, you can visit the following links from Microsoft Official Documentation:
-- Azure Cosmos DB: https://docs.microsoft.com/en-us/azure/cosmos-db/introduction
-- Azure C
+- An [introduction](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction) to Azure Cosmos DB
+- [Considerations](https://docs.microsoft.com/en-us/azure/cosmos-db/choose-api#considerations-when-choosing-an-api) when choosing an API in Azure Cosmos DB
 
-The Azure Cosmos DB REST API provides programmatic access to Azure Cosmos DB resources to create, query, and delete databases, document collections, and documents. To perform operations on Azure Cosmos DB resources, you send HTTPS requests with a supported method: GET, POST, PUT, or DELETE to an endpoint that targets a resource collection or a specific resource. This section explains how to work with resources by using the REST API.
+Postman is an API platform for building and using APIs. 
+- Why use Postman? Simply put, Postman simplifies each step of the API lifecycle and streamlines collaboration so you can create better APIs—faster.
+
+The Azure Cosmos DB REST API provides programmatic access to Azure Cosmos DB resources to create, query, and delete databases, document collections, and documents. To perform operations on Azure Cosmos DB resources, you send HTTPS requests with a supported method: GET, POST, PUT, or DELETE to an endpoint that targets a resource collection or a specific resource.
+
+## Creating an Azure Cosmos DB Account
+
+Follow this [quickstart](https://docs.microsoft.com/en-us/azure/cosmos-db/sql/create-cosmosdb-resources-portal) to use the Azure portal to create an Azure Cosmos DB SQL API account. Once done, please note down the following key items which we will need in Postman:
+
+Go to Keys > "Read-write Keys" and note:
+- URI
+- PRIMARY KEY
+
+E.g from my account, I have noted down the 2 following items:
+![Image1](media/Essentials.png)
+
+
+
