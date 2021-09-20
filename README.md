@@ -315,11 +315,11 @@ Before you click on the **SEND** button, you need to ensure your Headers are set
 
 **TIP**: In case you have forgotten OR do not remember the PartitionKey value for your database, you can use the GET ops of ['List Collections'](https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-collections) to check the PartitionKey value. E.g for my example, it is as shown below.
 
-![Image13](codesnippet.png)
+![Image13](postman8.png)
 
 Before we move ahead, let us explore another excellent feature in Postman. It provides you within the GUI the corresponding Code Snippet for a given REST API call that you have fired in a programming language of your choice as as Developer. You can directly copy it from therein, and embed in your application. E.g. I have fired a creating a new document (called Ghosh Family) in my collection. After REST API call executes successfully, you can click on the </> icon on the right hand side, and it opens up the **Code snippet** area wherein you can select the programming language of choice from the drop-down. I have chosen C# and as you can see in the image below, I have the corresponding code generated which I can copy from here and paste to create a New Client-end (facing) .NET application (Web or Console) in Visual Studio.
 
-![Image14](postman8.png)
+![Image14](codesnippet.png)
 
 ## HTTP Status Codes
 Microsoft maintains a comprehensive list of all HTTP Status codes returned by the REST operations. You can access it [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb). The top 3 status codes which you may focus include:
