@@ -222,7 +222,6 @@ Before we deep-dive into a few of them, here's the [complete list of Common Task
 | **Users** | Create, List, Get, Replace, Delete, Query | 6 |
 | **Permissions** | Create, List, Get, Replace, Delete, Query | 6 |
 | **Offers** | Get, List, Replace, Query | 4 |
-|   |   |   |   |
 
 Here's a few which I have from my Postman account (see image below). There's 2 **best practices** that I wish to highlight here:
 
