@@ -233,7 +233,7 @@ Here's a few which I have from my Postman account (see image below). There's 2 *
 Let's now see a few ops in action and I will explain the key concepts as well in effectively using Postman in the walk-through of using an API.
 
 ### List Databases
-This is a GET operation, wherein you type in: http://{{DocumentDBHost}}/dbs. You will need to ensure that your specific Environment Options are chosen correctly, and also once written, before firing the API, hover your mouse pointer on top of the variable. It should showcase in green the correctly set variable values. In case it does not, then it is any one of 3 possibilities: 1) you have either not correctly set the environment variable values, 2) you had correctly set in the past, but they have got overwritten for some reason, 3) you have not chosen the correct environment from the top-right-hand environment drop-down list. Always check these parameters to troubleshoot. If you have set correctly, it should showcase as below in green:
+This is a GET operation, wherein you type in Request URI in format: http://{{DocumentDBHost}}/dbs. You will need to ensure that your specific Environment Options are chosen correctly, and also once written, before firing the API, hover your mouse pointer on top of the variable. It should showcase in green the correctly set variable values. In case it does not, then it is any one of 3 possibilities: 1) you have either not correctly set the environment variable values, 2) you had correctly set in the past, but they have got overwritten for some reason, 3) you have not chosen the correct environment from the top-right-hand environment drop-down list. Always check these parameters to troubleshoot. If you have set correctly, it should showcase as below in green:
 
 ![Image6](postman2.png)
 
@@ -270,3 +270,37 @@ Before you move on, here's 5 things you should explore:
 4. At the bottom of the screen, you shall see the **Console** which you can pull up and deep dive into timestamps for the operation as it plays out. For example, if you wish to deep dive into Network headers, Request headers, Reponse headers, you can do so. E.g. for my GET operation, I have the output as shown in image below.
 
 ![Image9](postman5.png)
+
+Since we're currently performing a 'List Databases' in an Azure Cosmos DB account, you should refer to the official documentation which explains **Response** [Body](https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-databases#body-1) in granular detail with an example. In my case, I have received:
+
+```
+{
+    "_rid": "",
+    "Databases": [
+        {
+            "id": "FamilyDatabase",
+            "_etag": "\"08008706-0000-0700-0000-5f6c45840000\"",
+            "_rid": "32s3AA==",
+            "_self": "dbs/32s3AA==/",
+            "_colls": "colls/",
+            "_users": "users/",
+            "_ts": 1600931204
+        }
+    ],
+    "_count": 1
+}
+```
+wherein:
+- _rid: system generated property. The value is empty for this operation.
+- id: The unique user generated name for the database.
+and others which you read more from [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-databases#body-1).
+
+Let us see one more example with a POST operation.
+
+### Create a Document within a Collection within a Database within an Account
+This is a POST operation, wherein you type in Request URI in format: https://{{DocumentDBHost}}/dbs/FamilyDatabase/colls/FamilyContainer/docs. You will need to ensure that your specific Environment Options are chosen correctly, and also once written, before firing the API, hover your mouse pointer on top of the variable. It should showcase in green the correctly set variable values. In my example, I wanted to create a 'Steve Jobs' family document within FamilyContainer within FamilyDatabase database. See the image below for inputting the correctly formatted JSON in the Body of the POST ops.
+
+![Image10](postman6.png)
+
+
+
