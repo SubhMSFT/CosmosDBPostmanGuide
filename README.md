@@ -304,14 +304,18 @@ This is a POST operation, wherein you type in Request URI in format: https://{{D
 
 Before you click on the **SEND** button, you need to ensure your Headers are set correctly as well. E.g. for creating a Document, if you fire the API call without mentioning the Partition Key for your collection, it will fail. You will need to set:
 
-- **x-ms-documentdb-partitionkey**: this will be in the format, ["whateverisyourpartitionkey"]. E.g. in my collection, \Lastname is the Partition Key. So I have put ["Jobs"] in my example. Common error that you can do include:
-1. Keeping it blank. API call will fail.
-2. Keeping it within quotes only. E.g. "Jobs" is incorrect.
-3. Pasting your PartitionKey. E.g. "Lastname" is incorrect. 
-4. It has to the value of the PartitionKey. Hence, ["Jobs"] is correct. So from my example, here's the correct setting:
+- **x-ms-documentdb-partitionkey**: this will be in the format, ["whateverisyourpartitionkey"]. E.g. in my collection, /LastName is the Partition Key. So I have put ["Jobs"] in my example. Common error that you can do include:
+1. Not providing x-ms-documentdb-partitionkey. API call will fail.
+2. Keeping x-ms-documentdb-partitionkey blank. API call will fail.
+3. Keeping x-ms-documentdb-partitionkey within quotes only. E.g. "Jobs" is incorrect.
+4. Pasting your PartitionKey. E.g. "LastName" OR "/LastnName" is incorrect. 
+5. It has to the **value of the PartitionKey**. Hence, ["Jobs"] is correct. So from my example, here's the correct setting:
 
 ![Image11](postman7.png)
 
+**TIP**: In case you have forgotten OR do not remember the PartitionKey value for your database, you can use the GET ops of ['List Collections'](https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-collections) to check the PartitionKey value. E.g for my example, it is as shown below.
+
+![Image11](postman8.png)
 
 
 
