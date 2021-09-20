@@ -18,7 +18,7 @@ This document provides guidance on how to setup Postman for testing and working 
 
 [Creating an Azure Cosmos DB Account](#creating-an-azure-cosmos-db-account) 
 
-[Pattern 1 - Access via Service Principal](#Pattern-1---Access-via-Service-Principal)
+[Setting up Postman](#setting-up-postman)
 
 
 
@@ -51,5 +51,10 @@ Go to Keys > "Read-write Keys" and note:
 E.g from my account, I have noted down the 2 following items:
 ![Image1](Essentials.png)
 
+## Setting up Postman
+
+If you have a Postman account already, simply login. Otherwise, create an account and login. Once done, click on 'Workspaces' and create a new Workspace using "+ New Workspace". Example, I have created a workspace called, "My Workspace". Enter your specific workspace and then click on the 'Environments' tab.
+
+![Image2](Environments.png)
 
 
