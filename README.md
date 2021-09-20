@@ -73,12 +73,121 @@ We need to setup Environment Variables which will be applicable for next steps w
 
 Let us understand these parameters and the significance that each plays:
 
-- **DocumentDBMasterKey**: The master key token is the *all access* key token that allows users to have full control of Cosmos DB resources in a particular account. The master key is created during the creation of the account; there are 2 sets of keys: primary key & secondary key. Copy PRIMARY KEY from Azure portal, and paste the value in Postman Environment variable (as shown in image below).
+- **DocumentDBMasterKey**: The master key token is the *all access* key token that allows users to have full control of Cosmos DB resources in a particular account. The master key is created during the creation of the account; there are 2 sets of keys: primary key & secondary key. Copy PRIMARY KEY from Azure portal, and paste the value in Postman Environment variable (as shown in image below). Please ensure you paste it under the column heading 'CURRENT VALUE' and **not** 'INITIAL VALUE'. Leave 'INITIAL VALUE' as it is.
 
-- **DocumentDBHost**: This is a part of the URL without the leading "https://". So extract the remaining from Azure portal, and paste the value here (as shown in image below).
+- **DocumentDBHost**: This is a part of the URL without the leading "https://". So extract the remaining from Azure portal, and paste the value here (as shown in image below). Please ensure you paste it under the column heading 'CURRENT VALUE' and **not** 'INITIAL VALUE'. Leave 'INITIAL VALUE' as it is.
 
 - **RFC1123time**: All REST operations, whether you're using a master key token or resource token, must include the authorization header with the authorization string in order to interact with a resource. The Date portion of the string is the UTC date and time the message was sent (in "HTTP-date" format as defined by RFC 7231 Date/Time Formats), for example, Tue, 01 Nov 1994 08:12:31 GMT. In C#, it can be obtained by using the "R" format specifier on the DateTime.UtcNow value. This same date(in same format) also needs to be passed as x-ms-date header in the request. Please visit Microsoft documentation link [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/access-control-on-cosmosdb-resources#authorization-header) to read further on how the the hashed token signature for a master token is contructured. We shall be contructing this programmatically later on. For the time-being, leave it empty.
 
-- **authToken**: We shall be contructing this programmatically later on via a pre-request script to compose the auth token. For the time-being, leave it empty
+- **authToken**: We shall be contructing this programmatically later on via a pre-request script to compose the auth token. For the time-being, leave it empty.
+
+Once done, ensure you click on 'Save' on top right-hand corner, and exit.
 
 ![Image3](VariableValues1.png)
+
+Next, click on 'Collections' tab. You can add a new collection by clicking on '+ Create New Collection'. E.g. I had created a collection called 'DocumentDB'. Once created, you need to ensure that we setup 2 key parameters at the Collection-level.
+
+- **Authorization**: Click on Type drop-down, and select, 'API Key'.
+
+- **Pre-request Script**: In Pre-request Script box, you will need to copy and paste the following code shared below. This script executes before every request in this collection. You can setup at every request level, but it is not recommended; the best practice would be to ensure its set at collection level.
+
+ ```
+ // store our master key for documentdb
+var mastKey = postman.getEnvironmentVariable("DocumentDBMasterKey");
+console.log("mastKey = " + mastKey);
+
+// store our date as RFC1123 format for the request
+var today = new Date();
+var UTCstring = today.toUTCString();
+postman.setEnvironmentVariable("RFC1123time", UTCstring);
+
+// Grab the request url
+var url = request.url.trim(); 
+console.log("request url = " + url);
+
+// strip the url of the hostname up and leading slash
+var strippedurl = url.replace(new RegExp('^https?://[^/]+/'),'/');
+console.log ("stripped Url = " + strippedurl);
+
+// push the parts down into an array so we can determine if the call is on a specific item
+// or if it is on a resource (odd would mean a resource, even would mean an item)
+var strippedparts = strippedurl.split("/");
+var truestrippedcount = (strippedparts.length - 1);
+console.log(truestrippedcount);
+
+// define resourceId/Type now so we can assign based on the amount of levels
+var resourceId = "";
+var resType = "";
+
+// its odd (resource request)
+if (truestrippedcount % 2)
+{
+    console.log("odd");
+    // assign resource type to the last part we found.
+    resType = strippedparts[truestrippedcount];
+    console.log(resType);
+    
+    if (truestrippedcount > 1)
+    {
+        // now pull out the resource id by searching for the last slash and substringing to it.
+        var lastPart = strippedurl.lastIndexOf("/");
+        resourceId = strippedurl.substring(1,lastPart);
+        console.log(resourceId);
+    }
+}
+else // its even (item request on resource)
+{
+    console.log("even");
+    // assign resource type to the part before the last we found (last is resource id)
+    resType = strippedparts[truestrippedcount - 1];
+    console.log("resType");
+    // finally remove the leading slash which we used to find the resource if it was
+    // only one level deep.
+    strippedurl = strippedurl.substring(1);
+    console.log("strippedurl");
+    // assign our resourceId
+    resourceId = strippedurl;
+    console.log("resourceId");
+}
+
+// assign our verb
+var verb = request.method.toLowerCase();
+
+// assign our RFC 1123 date
+var date = UTCstring.toLowerCase();
+
+// parse our master key out as base64 encoding
+var key = CryptoJS.enc.Base64.parse(mastKey);
+console.log("key = " + key);
+
+// build up the request text for the signature so can sign it along with the key
+var text = (verb || "").toLowerCase() + "\n" + 
+               (resType || "").toLowerCase() + "\n" + 
+               (resourceId || "") + "\n" + 
+               (date || "").toLowerCase() + "\n" + 
+               "" + "\n";
+console.log("text = " + text);
+
+// create the signature from build up request text
+var signature = CryptoJS.HmacSHA256(text, key);
+console.log("sig = " + signature);
+
+// back to base 64 bits
+var base64Bits = CryptoJS.enc.Base64.stringify(signature);
+console.log("base64bits = " + base64Bits);
+
+// format our authentication token and URI encode it.
+var MasterToken = "master";
+var TokenVersion = "1.0";
+auth = encodeURIComponent("type=" + MasterToken + "&ver=" + TokenVersion + "&sig=" + base64Bits);
+console.log("auth = " + auth);
+
+// set our auth token enviornmental variable.
+postman.setEnvironmentVariable("authToken", auth);
+
+```
+
+
+
+
+
