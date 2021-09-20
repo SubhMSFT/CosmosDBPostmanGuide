@@ -9,7 +9,8 @@ This document provides guidance on how to setup Postman for testing and working 
 
 | **Name** | **Title** | **Notes** | **Date** |
 | --- | --- | --- | --- |
-| Subhasish Ghosh | Cloud Solution Architect – Data &amp; AI, Microsoft EC-US, Global CSU | Original | 20 September 2021 |
+| Subhasish Ghosh | Cloud Solution Architect – Data &amp; AI, 
+Microsoft EC-US, Global CSU | Original | 20 September 2021 |
 |   |   |   |   |
 
 # Contents
