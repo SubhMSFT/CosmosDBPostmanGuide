@@ -49,7 +49,7 @@ Go to Keys > "Read-write Keys" and note:
 - PRIMARY KEY
 
 E.g from my account, I have noted down the 2 following items:
-![Image1](media/Essentials.png)
+![Image1](Essentials.png)
 
 
 
