@@ -304,7 +304,7 @@ This is a POST operation, wherein you type in Request URI in format: https://{{D
 
 Before you click on the **SEND** button, you need to ensure your Headers are set correctly as well. E.g. for creating a Document, if you fire the API call without mentioning the Partition Key for your collection, it will fail. You will need to set:
 
-- **x-ms-documentdb-partitionkey**: this will be in the format, ["whateverisyourpartitionkey"]. E.g. in my collection, /LastName is the Partition Key. So I have put ["Jobs"] in my example. Common error that you can do include:
+- **x-ms-documentdb-partitionkey**: this will be in the format, ["whateverisyourpartitionkey"]. E.g. in my collection, /LastName is the Partition Key. So I have put ["Jobs"] in my example. Common errors that you can do include:
 1. Not providing x-ms-documentdb-partitionkey. API call will fail.
 2. Keeping x-ms-documentdb-partitionkey blank. API call will fail.
 3. Keeping x-ms-documentdb-partitionkey within quotes only. E.g. "Jobs" is incorrect.
@@ -318,7 +318,10 @@ Before you click on the **SEND** button, you need to ensure your Headers are set
 ![Image11](postman8.png)
 
 ## HTTP Status Codes
+Microsoft maintains a comprehensive list of all HTTP Status codes returned by the REST operations. You can access it [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb). The top 3 status codes which you may focus include:
 
+- 400: Bad request. You should focus on the JSON/SQL/Jscript in the request body. An extra braces OR ; OR closing bracket missing will result in 400 in most cases. 
+- 401: Unauthorized: 
 
 
 ## Troubleshooting Common Errors
@@ -328,7 +331,7 @@ Before you click on the **SEND** button, you need to ensure your Headers are set
 This HOWTO explores the steps for setting up and leveraging Postman API platform for performing operations on Microsoft's Azure Cosmos DB resources using REST APIs. The Azure Cosmos DB REST API provides programmatic access to Azure Cosmos DB resources to create, query, and delete databases, document collections, and documents. To perform operations on Azure Cosmos DB resources, you send HTTPS requests with a supported method: GET, POST, PUT, or DELETE to an endpoint that targets a resource collection or a specific resource. You are encouraged to explore all the Ops using Postman and provide feedback, if any.
 
 ## Feedback
-You can share any feedback at: sugh AT microsoft DOT com
+You can share any feedback at: sugh AT microsoft dot com
 
 ## License/Terms of Use
 
