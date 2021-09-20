@@ -26,11 +26,11 @@ This document provides guidance on how to setup Postman for testing and working 
 
 [Troubleshooting Common Errors](#troubleshooting-common-errors)
 
-[Conclusion](#Conclusion)
+[Conclusion](#conclusion)
 
 [Feedback](#feedback-is-welcome)
 
-[License/Terms of Use](#License/Terms-of-Use)
+[License/Terms of Use](#license/terms-of-use)
 
 ## Introduction
 
@@ -308,7 +308,7 @@ Before you click on the **SEND** button, you need to ensure your Headers are set
 1. Not providing x-ms-documentdb-partitionkey. API call will fail.
 2. Keeping x-ms-documentdb-partitionkey blank. API call will fail.
 3. Keeping x-ms-documentdb-partitionkey within quotes only. E.g. "Jobs" is incorrect.
-4. Pasting your PartitionKey. E.g. "LastName" OR "/LastnName" is incorrect. 
+4. Pasting your PartitionKey. E.g. "LastName" OR "/LastName" is incorrect. 
 5. It has to the **value of the PartitionKey**. Hence, ["Jobs"] is correct. So from my example, here's the correct setting:
 
 ![Image11](postman7.png)
@@ -317,7 +317,28 @@ Before you click on the **SEND** button, you need to ensure your Headers are set
 
 ![Image11](postman8.png)
 
+## HTTP Status Codes
+
+
+
+## Troubleshooting Common Errors
+
+
+## Conclusion
 
 
 
 
+## Feedback
+
+
+
+## License/Terms of User
+
+This is a free white paper released into the public domain.
+
+Anyone is free to use or distribute this white paper, for any purpose, commercial or non-commercial, and by any means.
+
+THE WHITE PAPER IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE WHITE PAPER.
