@@ -20,6 +20,8 @@ This document provides guidance on how to setup Postman for testing and working 
 
 [Setting up Postman](#setting-up-postman)
 
+[Testing Cosmos DB REST APIs])(#testing-cosmos-db-rest-apis)
+
 [HTTP Status Codes](#http-status-codes)
 
 [Troubleshooting Common Errors](#troubleshooting-common-errors)
@@ -200,7 +202,8 @@ Once done, ensure you click on save and exit. You should see "green buttons" nex
 
 ![Image4](collparameters.png)
 
-Now, we're ready to create our REST API requests.
+Now, we're ready to create our REST API requests. If you've reached thus far in the Journey, awesome! 
+Take a much well deserved Coffee Break. 
 
-
+## Testing Cosmos DB REST APIs
 
