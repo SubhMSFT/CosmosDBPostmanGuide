@@ -325,15 +325,12 @@ Before you click on the **SEND** button, you need to ensure your Headers are set
 
 
 ## Conclusion
-
-
-
+This HOWTO explores the steps for setting up and leveraging Postman API platform for performing operations on Microsoft's Azure Cosmos DB resources using REST APIs. The Azure Cosmos DB REST API provides programmatic access to Azure Cosmos DB resources to create, query, and delete databases, document collections, and documents. To perform operations on Azure Cosmos DB resources, you send HTTPS requests with a supported method: GET, POST, PUT, or DELETE to an endpoint that targets a resource collection or a specific resource. You are encouraged to explore all the Ops using Postman and provide feedback, if any.
 
 ## Feedback
+You can share any feedback at: sugh AT microsoft DOT com
 
-
-
-## License/Terms of User
+## License/Terms of Use
 
 This is a free white paper released into the public domain.
 
