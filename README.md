@@ -321,6 +321,8 @@ Before we move ahead, let us explore another excellent feature in Postman. It pr
 
 ![Image14](codesnippet.png)
 
+In this HOWTO I have only covered 2 REST APIs, but you can use the guidance for setting up other REST API requests for Azure Cosmos DB and try it out yourself! Have fun.
+
 ## HTTP Status Codes
 Microsoft maintains a comprehensive list of all HTTP Status codes returned by the REST operations. You can access it [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb). The top 3 status codes which you may focus include:
 
