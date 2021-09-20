@@ -16,7 +16,7 @@ This document provides guidance on how to setup Postman for testing and working 
 
 [Introduction](#Introduction)
 
-[Creating an Azure Cosmos DB Account](#creating-cosmos-db-account) 
+[Creating an Azure Cosmos DB Account](#creating-an-azure-cosmos-db-account) 
 
 [Pattern 1 - Access via Service Principal](#Pattern-1---Access-via-Service-Principal)
 
