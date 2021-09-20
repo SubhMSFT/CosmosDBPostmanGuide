@@ -22,7 +22,11 @@ This document provides guidance on how to setup Postman for testing and working 
 
 [HTTP Status Codes](#http-status-codes)
 
+[Troubleshooting Common Errors](#troubleshooting-common-errors)
+
 [Conclusion](#Conclusion)
+
+[Feedback](#feedback-is-welcome)
 
 [License/Terms of Use](#License/Terms-of-Use)
 
@@ -187,7 +191,16 @@ postman.setEnvironmentVariable("authToken", auth);
 
 ```
 
+In the code above, ensure you change:
+var mastKey = postman.getEnvironmentVariable("**DocumentDBMasterKey**"); to whatever you have named your Cosmos DB MasterKey environment variable.
+E.g. if you have called it, MyCosmosDBMasterKey, then your code should look like:
+var mastKey = postman.getEnvironmentVariable("**MyCosmosDBMasterKey**");
 
+Once done, ensure you click on save and exit. You should see "green buttons" next to 'Authorization' & 'Pre-request Script' parameters, as shown in image below.
+
+![Image4](collparameters.png)
+
+Now, we're ready to create our REST API requests.
 
 
 
