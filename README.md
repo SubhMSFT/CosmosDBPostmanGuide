@@ -20,7 +20,7 @@ This document provides guidance on how to setup Postman for testing and working 
 
 [Setting up Postman](#setting-up-postman)
 
-[Testing Cosmos DB REST APIs])(#testing-cosmos-db-rest-apis)
+[Testing Cosmos DB REST APIs](#testing-cosmos-db-rest-apis)
 
 [HTTP Status Codes](#http-status-codes)
 
