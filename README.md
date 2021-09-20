@@ -1,4 +1,4 @@
-# Microsoft Azure CosmosDB RESP APIs PostmanGuide
+# Microsoft Azure Cosmos DB REST APIs Postman Guide
 Step-by-step guidance for testing Azure Cosmos DB resources using REST API with Postman
 
 **Summary:**
