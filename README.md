@@ -235,13 +235,13 @@ Let's now see a few ops in action and I will explain the key concepts as well in
 ### List Databases
 This is a GET operation, wherein you type in Request URI in format: http://{{DocumentDBHost}}/dbs. You will need to ensure that your specific Environment Options are chosen correctly, and also once written, before firing the API, hover your mouse pointer on top of the variable. It should showcase in green the correctly set variable values. In case it does not, then it is any one of 3 possibilities: 1) you have either not correctly set the environment variable values, 2) you had correctly set in the past, but they have got overwritten for some reason, 3) you have not chosen the correct environment from the top-right-hand environment drop-down list. Always check these parameters to troubleshoot. If you have set correctly, it should showcase as below in green:
 
-![Image6](postman2.png)
+![Image7](postman2.png)
 
 Before you click on "Send" button, there'a few other things to check which are super-critical. Click on Headers (see image below). For a detailed understanding of different Header values, you can consult Microsoft official documentation [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-cosmosdb-rest-request-headers). **This is an extremely important section and do not hurry in reading through it since incorrect values in Headers will result in failed REST API calls. Within the Header values, a few are 'Required', and rest are 'Optional'. You will need to understand the critical 'Required' values for every REST API operation that you wish to undertake.** 
 
 Let us go to our specific example:
 
-![Image7](postman3.png)
+![Image8](postman3.png)
 
 In the image above, as you can see, there's 11 Headers. Headers can be "auto-generated" which are added on the fly, or you can mention your own specifically, which then replaces the 'auto-generated' ones. E.g. you can see 2 **Accept** header values. The auto-generated one is "/" but I have replaced it with my own "application/json". 
 
@@ -257,7 +257,7 @@ If you hover your mouse-pointer over {{authToken}} and {{RFC1123time}}, you shal
 
 Now ensure all is saved and finally, click on the **SEND** button. If you have come thus far, and all values are set correctly, you shall see an output as shown in the image below. Click on the 'Save Response' button and you can save the response with an appropriate name; e.g. in my case, I save Status 200 with "Response 200 OK".
 
-![Image8](postman4.png)
+![Image9](postman4.png)
 
 Before you move on, here's 5 things you should explore:
 
@@ -269,7 +269,7 @@ Before you move on, here's 5 things you should explore:
 
 4. At the bottom of the screen, you shall see the **Console** which you can pull up and deep dive into timestamps for the operation as it plays out. For example, if you wish to deep dive into Network headers, Request headers, Reponse headers, you can do so. E.g. for my GET operation, I have the output as shown in image below.
 
-![Image9](postman5.png)
+![Image10](postman5.png)
 
 Since we're currently performing a 'List Databases' in an Azure Cosmos DB account, you should refer to the official documentation which explains **Response** [Body](https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-databases#body-1) in granular detail with an example. In my case, I have received:
 
@@ -300,7 +300,7 @@ Let us see one more example with a POST operation.
 ### Create a Document within a Collection within a Database within an Account
 This is a POST operation, wherein you type in Request URI in format: https://{{DocumentDBHost}}/dbs/FamilyDatabase/colls/FamilyContainer/docs. You will need to ensure that your specific Environment Options are chosen correctly, and also once written, before firing the API, hover your mouse pointer on top of the variable. It should showcase in green the correctly set variable values. In my example, I wanted to create a 'Steve Jobs' family document within FamilyContainer within FamilyDatabase database. See the image below for inputting the correctly formatted JSON in the Body of the POST ops.
 
-![Image10](postman6.png)
+![Image11](postman6.png)
 
 Before you click on the **SEND** button, you need to ensure your Headers are set correctly as well. E.g. for creating a Document, if you fire the API call without mentioning the Partition Key for your collection, it will fail. You will need to set:
 
@@ -311,7 +311,7 @@ Before you click on the **SEND** button, you need to ensure your Headers are set
 4. Pasting your PartitionKey. E.g. "LastName" OR "/LastName" is incorrect. 
 5. It has to the **value of the PartitionKey**. Hence, ["Jobs"] is correct. So from my example, here's the correct setting:
 
-![Image11](postman7.png)
+![Image12](postman7.png)
 
 **TIP**: In case you have forgotten OR do not remember the PartitionKey value for your database, you can use the GET ops of ['List Collections'](https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-collections) to check the PartitionKey value. E.g for my example, it is as shown below.
 
@@ -320,9 +320,11 @@ Before you click on the **SEND** button, you need to ensure your Headers are set
 ## HTTP Status Codes
 Microsoft maintains a comprehensive list of all HTTP Status codes returned by the REST operations. You can access it [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb). The top 3 status codes which you may focus include:
 
-- 400: Bad request. You should focus on the JSON/SQL/Jscript in the request body. An extra braces OR ; OR closing bracket missing will result in 400 in most cases. 
-- 401: Unauthorized: 
+- **400: Bad request**. You should focus on the JSON/SQL/Jscript in the request body. An extra brace OR semi-colon OR closing bracket missing will result in 400 in most cases. 
+![Image13](postman9.png)
 
+- **401: Unauthorized**: 401 is returned when the Authorization header is invalid for the requested resource.
+![Image14](postman10.png)
 
 ## Troubleshooting Common Errors
 
@@ -336,7 +338,6 @@ You can share any feedback at: sugh AT microsoft dot com
 ## License/Terms of Use
 
 This is a free white paper released into the public domain.
-
 Anyone is free to use or distribute this white paper, for any purpose, commercial or non-commercial, and by any means.
 
 THE WHITE PAPER IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
