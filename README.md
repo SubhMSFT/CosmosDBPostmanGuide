@@ -232,4 +232,7 @@ Here's a few which I have from my Postman account (see image below). There's 2 *
 
 Let's now see a few ops in action.
 
+### List Databases
+This is a GET operation, wherein you type in: http://{{DocumentDBHost}}/dbs. You will need to ensure that your specific Environment Options are chosen correctly, and also once written, before firing the API, hover your mouse pointer on top of the variable. It should showcase in green the correctly set variable values. In case it does not, then you have either not correctly set the environment variable values OR they have got overwritten OR you have now chosen the correct variable explicitly. 
 
+![Image6](postman2.png)
