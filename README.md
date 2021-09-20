@@ -230,9 +230,24 @@ Here's a few which I have from my Postman account (see image below). There's 2 *
 
 2) Capture all HTTP Status Codes as you work through a progression. E.g. in List Users GET operation, I checked whether working with when I had no users, and then I created a user with POST operation, after which I again captured Status Code for one user called "a_user" and then I created a user called "abhijit_user" for which I again captured the GET status code and saved it as 'Response 200 - OK - 2 users'. This gives a lineage to your operations and in case one particular REST API call fails, and you are sharing a Workspace with other developers/users, they can trace the ChangeLog and also see the specific Operations that failed OR resulted in a failed HTTP Status Code.
 
-Let's now see a few ops in action.
+Let's now see a few ops in action and I will explain the key concepts as well in effectively using Postman in the walk-through of using an API.
 
 ### List Databases
 This is a GET operation, wherein you type in: http://{{DocumentDBHost}}/dbs. You will need to ensure that your specific Environment Options are chosen correctly, and also once written, before firing the API, hover your mouse pointer on top of the variable. It should showcase in green the correctly set variable values. In case it does not, then it is any one of 3 possibilities: 1) you have either not correctly set the environment variable values, 2) you had correctly set in the past, but they have got overwritten for some reason, 3) you have not chosen the correct environment from the top-right-hand environment drop-down list. Always check these parameters to troubleshoot. If you have set correctly, it should showcase as below in green:
 
 ![Image6](postman2.png)
+
+Before you click on "Send" button, there'a few other things to check which are super-critical. Click on Headers (see image below). For a detailed understanding of different Header values, you can consult Microsoft official documentation [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-cosmosdb-rest-request-headers). **This is an extremely important section and do not hurry in reading through it since incorrect values in Headers will result in failed REST API calls. Within the Header values, a few are 'Required', and rest are 'Optional'. You will need to understand the critical 'Required' values for every REST API operation that you wish to undertake.** 
+
+Let us go to our specific example:
+
+![Image7](postman3.png)
+
+In the image above, as you can see, there's 11 Headers. Headers can be "auto-generated" which are added on the fly, or you can mention your own specifically, which then replaces the 'auto-generated' ones. E.g. you can see 2 **Accept** header values. The auto-generated one is */* but I have replaced it with my own "application/json". 
+
+A few other important ones which are required and important include:
+
+- 
+
+
+
