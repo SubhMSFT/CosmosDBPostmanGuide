@@ -73,7 +73,7 @@ E.g from my account, I have noted down the 2 following items:
 
 If you have a Postman account already, simply [login](https://identity.getpostman.com/login). Otherwise, create an account and login. Once done, click on 'Workspaces' and create a new Workspace using "+ New Workspace". Example, I have created a workspace called, "My Workspace". Enter your specific workspace and then click on the 'Environments' tab.
 
-![Image2](Environments.png)
+![Image2](media/Environments.png)
 
 We need to setup Environment Variables which will be applicable for next steps when we are working with Azure Cosmos DB resources via REST APIs. So here you need to setup 4 key parameters, 2 of which you will need to fill-in manually, and 2 of which will be done later programmatically via Script.
 
@@ -89,7 +89,7 @@ Let us understand these parameters and the significance that each plays:
 
 Once done, ensure you click on 'Save' on top right-hand corner, and exit.
 
-![Image3](VariableValues1.png)
+![Image3](media/VariableValues1.png)
 
 Next, click on 'Collections' tab. You can add a new collection by clicking on '+ Create New Collection'. E.g. I had created a collection called 'DocumentDB'. Once created, you need to ensure that we setup 2 key parameters at the Collection-level.
 
@@ -200,12 +200,12 @@ var mastKey = postman.getEnvironmentVariable("**MyCosmosDBMasterKey**");
 
 Once done, ensure you click on save and exit. You should see "green buttons" next to 'Authorization' & 'Pre-request Script' parameters, as shown in image below.
 
-![Image4](collparameters.png)
+![Image4](media/collparameters.png)
 
 Now, we're ready to create our REST API requests. 
 If you've reached thus far in the Journey, awesome! Take a much well deserved Coffee Break. 
 
-![Image5](coffeebreak1.png)
+![Image5](media/coffeebreak1.png)
 
 ## Testing Cosmos DB REST APIs
 
@@ -224,7 +224,7 @@ Before we deep-dive into a few of them, here's the [complete list of Common Task
 
 Here's a few which I have from my Postman account (see image below). There's 2 **best practices** that I wish to highlight here:
 
-![Image6](postman1.png)
+![Image6](media/postman1.png)
 
 1) Capture the response from the REST API call and save it with a 'Response 200 OK' when it works fine, or with a corresponding Error Code so that you can track it later. You can find the full list of all HTTP Status Codes [here](#http-status-codes). 
 
@@ -235,13 +235,13 @@ Let's now see a few ops in action and I will explain the key concepts as well in
 ### List Databases
 This is a GET operation, wherein you type in Request URI in format: http://{{DocumentDBHost}}/dbs. You will need to ensure that your specific Environment Options are chosen correctly, and also once written, before firing the API, hover your mouse pointer on top of the variable. It should showcase in green the correctly set variable values. In case it does not, then it is any one of 3 possibilities: 1) you have either not correctly set the environment variable values, 2) you had correctly set in the past, but they have got overwritten for some reason, 3) you have not chosen the correct environment from the top-right-hand environment drop-down list. Always check these parameters to troubleshoot. If you have set correctly, it should showcase as below in green:
 
-![Image7](postman2.png)
+![Image7](media/postman2.png)
 
 Before you click on "Send" button, there'a few other things to check which are super-critical. Click on Headers (see image below). For a detailed understanding of different Header values, you can consult Microsoft official documentation [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/common-cosmosdb-rest-request-headers). **This is an extremely important section and do not hurry in reading through it since incorrect values in Headers will result in failed REST API calls. Within the Header values, a few are 'Required', and rest are 'Optional'. You will need to understand the critical 'Required' values for every REST API operation that you wish to undertake.** 
 
 Let us go to our specific example:
 
-![Image8](postman3.png)
+![Image8](media/postman3.png)
 
 In the image above, as you can see, there's 11 Headers. Headers can be "auto-generated" which are added on the fly, or you can mention your own specifically, which then replaces the 'auto-generated' ones. E.g. you can see 2 **Accept** header values. The auto-generated one is "/" but I have replaced it with my own "application/json". 
 
@@ -257,7 +257,7 @@ If you hover your mouse-pointer over {{authToken}} and {{RFC1123time}}, you shal
 
 Now ensure all is saved and finally, click on the **SEND** button. If you have come thus far, and all values are set correctly, you shall see an output as shown in the image below. Click on the 'Save Response' button and you can save the response with an appropriate name; e.g. in my case, I save Status 200 with "Response 200 OK".
 
-![Image9](postman4.png)
+![Image9](media/postman4.png)
 
 Before you move on, here's 5 things you should explore:
 
@@ -269,7 +269,7 @@ Before you move on, here's 5 things you should explore:
 
 4. At the bottom of the screen, you shall see the **Console** which you can pull up and deep dive into timestamps for the operation as it plays out. For example, if you wish to deep dive into Network headers, Request headers, Reponse headers, you can do so. E.g. for my GET operation, I have the output as shown in image below.
 
-![Image10](postman5.png)
+![Image10](media/postman5.png)
 
 Since we're currently performing a 'List Databases' in an Azure Cosmos DB account, you should refer to the official documentation which explains **Response** [Body](https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-databases#body-1) in granular detail with an example. In my case, I have received:
 
@@ -300,7 +300,7 @@ Let us see one more example with a POST operation.
 ### Create a Document within a Collection within a Database within an Account
 This is a POST operation, wherein you type in Request URI in format: https://{{DocumentDBHost}}/dbs/FamilyDatabase/colls/FamilyContainer/docs. You will need to ensure that your specific Environment Options are chosen correctly, and also once written, before firing the API, hover your mouse pointer on top of the variable. It should showcase in green the correctly set variable values. In my example, I wanted to create a 'Steve Jobs' family document within FamilyContainer within FamilyDatabase database. See the image below for inputting the correctly formatted JSON in the Body of the POST ops.
 
-![Image11](postman6.png)
+![Image11](media/postman6.png)
 
 Before you click on the **SEND** button, you need to ensure your Headers are set correctly as well. E.g. for creating a Document, if you fire the API call without mentioning the Partition Key for your collection, it will fail. You will need to set:
 
@@ -311,15 +311,15 @@ Before you click on the **SEND** button, you need to ensure your Headers are set
 4. Pasting your PartitionKey. E.g. "LastName" OR "/LastName" is incorrect. 
 5. It has to the **value of the PartitionKey**. Hence, ["Jobs"] is correct. So from my example, here's the correct setting:
 
-![Image12](postman7.png)
+![Image12](media/postman7.png)
 
 **TIP**: In case you have forgotten OR do not remember the PartitionKey value for your database, you can use the GET ops of ['List Collections'](https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-collections) to check the PartitionKey value. E.g for my example, it is as shown below.
 
-![Image13](postman8.png)
+![Image13](media/postman8.png)
 
 Before we move ahead, let us explore another excellent feature in Postman. It provides you within the GUI the corresponding Code Snippet for a given REST API call that you have fired in a programming language of your choice as as Developer. You can directly copy it from therein, and embed in your application. E.g. I have fired a creating a new document (called Ghosh Family) in my collection. After REST API call executes successfully, you can click on the </> icon on the right hand side, and it opens up the **Code snippet** area wherein you can select the programming language of choice from the drop-down. I have chosen C# and as you can see in the image below, I have the corresponding code generated which I can copy from here and paste to create a New Client-end (facing) .NET application (Web or Console) in Visual Studio.
 
-![Image14](codesnippet.png)
+![Image14](media/codesnippet.png)
 
 In this HOWTO I have only covered 2 REST APIs, but you can use the guidance for setting up other REST API requests for Azure Cosmos DB and try it out yourself! Have fun.
 
@@ -327,10 +327,10 @@ In this HOWTO I have only covered 2 REST APIs, but you can use the guidance for 
 Microsoft maintains a comprehensive list of all HTTP Status codes returned by the REST operations. You can access it [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb). The top 3 status codes which you may focus include:
 
 - **400: Bad request**. You should focus on the JSON/SQL/Jscript in the request body. An extra brace OR semi-colon OR closing bracket missing will result in 400 in most cases. 
-![Image15](postman9.png)
+![Image15](media/postman9.png)
 
 - **401: Unauthorized**: 401 is returned when the Authorization header is invalid for the requested resource.
-![Image16](postman10.png)
+![Image16](media/postman10.png)
 
 ## Troubleshooting Common Errors
 Postman provides a very stable environment for testing your REST APIs. If you're encountering errors, here's a CHECK LIST to check one by one:
@@ -344,7 +344,7 @@ Postman provides a very stable environment for testing your REST APIs. If you're
 7. Ensure you're correctly using the REQUIRED Headers. I once spent an entire night trying to troubleshoot a particular REST API which was failing and tinkered a 1000 places ony to find that one of the REQUIRED Headers is incorrectly set. So check, double-check and triple-check Headers values.
 8. In POST ops, check the format of JSON in Body. If incorrect, it will result in a 400 Error.
 9. If you receive a CORS Error after execution, then go to window bottom right-hand corner and click on 'Select Postman Agent', deselect 'Auto-select' and then click on Desktop Agent.
-![Image17](corserror.png)
+![Image17](media/corserror.png)
 
 ## Conclusion
 This HOWTO explores the steps for setting up and leveraging Postman API platform for performing operations on Microsoft's Azure Cosmos DB resources using REST APIs. The Azure Cosmos DB REST API provides programmatic access to Azure Cosmos DB resources to create, query, and delete databases, document collections, and documents. To perform operations on Azure Cosmos DB resources, you send HTTPS requests with a supported method: GET, POST, PUT, or DELETE to an endpoint that targets a resource collection or a specific resource. You are encouraged to explore all the Ops using Postman and provide feedback, if any.
