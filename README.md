@@ -243,7 +243,7 @@ Let us go to our specific example:
 
 ![Image7](postman3.png)
 
-In the image above, as you can see, there's 11 Headers. Headers can be "auto-generated" which are added on the fly, or you can mention your own specifically, which then replaces the 'auto-generated' ones. E.g. you can see 2 **Accept** header values. The auto-generated one is */* but I have replaced it with my own "application/json". 
+In the image above, as you can see, there's 11 Headers. Headers can be "auto-generated" which are added on the fly, or you can mention your own specifically, which then replaces the 'auto-generated' ones. E.g. you can see 2 **Accept** header values. The auto-generated one is "*/*" but I have replaced it with my own "application/json". 
 
 A few other important ones which are required and important include:
 
