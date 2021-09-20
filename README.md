@@ -315,16 +315,20 @@ Before you click on the **SEND** button, you need to ensure your Headers are set
 
 **TIP**: In case you have forgotten OR do not remember the PartitionKey value for your database, you can use the GET ops of ['List Collections'](https://docs.microsoft.com/en-us/rest/api/cosmos-db/list-collections) to check the PartitionKey value. E.g for my example, it is as shown below.
 
-![Image11](postman8.png)
+![Image13](codesnippet.png)
+
+Before we move ahead, let us explore another excellent feature in Postman. It provides you within the GUI the corresponding Code Snippet for a given REST API call that you have fired in a programming language of your choice as as Developer. You can directly copy it from therein, and embed in your application. E.g. I have fired a creating a new document (called Ghosh Family) in my collection. After REST API call executes successfully, you can click on the </> icon on the right hand side, and it opens up the **Code snippet** area wherein you can select the programming language of choice from the drop-down. I have chosen C# and as you can see in the image below, I have the corresponding code generated which I can copy from here and paste to create a New Client-end (facing) .NET application (Web or Console) in Visual Studio.
+
+![Image14](postman8.png)
 
 ## HTTP Status Codes
 Microsoft maintains a comprehensive list of all HTTP Status codes returned by the REST operations. You can access it [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb). The top 3 status codes which you may focus include:
 
 - **400: Bad request**. You should focus on the JSON/SQL/Jscript in the request body. An extra brace OR semi-colon OR closing bracket missing will result in 400 in most cases. 
-![Image13](postman9.png)
+![Image15](postman9.png)
 
 - **401: Unauthorized**: 401 is returned when the Authorization header is invalid for the requested resource.
-![Image14](postman10.png)
+![Image16](postman10.png)
 
 ## Troubleshooting Common Errors
 Postman provides a very stable environment for testing your REST APIs. If you're encountering errors, here's a CHECK LIST to check one by one:
@@ -338,7 +342,7 @@ Postman provides a very stable environment for testing your REST APIs. If you're
 7. Ensure you're correctly using the REQUIRED Headers. I once spent an entire night trying to troubleshoot a particular REST API which was failing and tinkered a 1000 places ony to find that one of the REQUIRED Headers is incorrectly set. So check, double-check and triple-check Headers values.
 8. In POST ops, check the format of JSON in Body. If incorrect, it will result in a 400 Error.
 9. If you receive a CORS Error after execution, then go to window bottom right-hand corner and click on 'Select Postman Agent', deselect 'Auto-select' and then click on Desktop Agent.
-![Image15](corserror.png)
+![Image17](corserror.png)
 
 ## Conclusion
 This HOWTO explores the steps for setting up and leveraging Postman API platform for performing operations on Microsoft's Azure Cosmos DB resources using REST APIs. The Azure Cosmos DB REST API provides programmatic access to Azure Cosmos DB resources to create, query, and delete databases, document collections, and documents. To perform operations on Azure Cosmos DB resources, you send HTTPS requests with a supported method: GET, POST, PUT, or DELETE to an endpoint that targets a resource collection or a specific resource. You are encouraged to explore all the Ops using Postman and provide feedback, if any.
