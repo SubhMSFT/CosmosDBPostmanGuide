@@ -205,5 +205,7 @@ Once done, ensure you click on save and exit. You should see "green buttons" nex
 Now, we're ready to create our REST API requests. If you've reached thus far in the Journey, awesome! 
 Take a much well deserved Coffee Break. 
 
+![Image5](coffeebreak.png)
+
 ## Testing Cosmos DB REST APIs
 
