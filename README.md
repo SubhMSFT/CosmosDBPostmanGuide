@@ -32,7 +32,7 @@ This document provides guidance on how to setup Postman for testing and working 
 
 [Feedback](#feedback)
 
-[License/Terms of Use](#license-terms-of-use)
+[License/Terms of Use](#license-&-terms-of-use)
 
 ## Introduction
 
@@ -402,7 +402,7 @@ This HOWTO explores the steps for setting up and leveraging Postman API platform
 ## Feedback
 You can share any feedback at: sugh AT microsoft dot com
 
-## License/Terms of Use
+## License & Terms of Use
 
 This is a free white paper released into the public domain.
 Anyone is free to use or distribute this white paper, for any purpose, commercial or non-commercial, and by any means.
