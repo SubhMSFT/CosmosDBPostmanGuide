@@ -32,7 +32,7 @@ This document provides guidance on how to setup Postman for testing and working 
 
 [Feedback](#feedback)
 
-[License/Terms of Use](#license-&-terms-of-use)
+[License/Terms of Use](#license--terms-of-use)
 
 ## Introduction
 
