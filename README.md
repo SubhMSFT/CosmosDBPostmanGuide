@@ -323,16 +323,62 @@ Before we move ahead, let us explore another excellent feature in Postman. It pr
 
 ![Image14](media/codesnippet.png)
 
-In this HOWTO I have only covered 2 REST APIs, but you can use the guidance for setting up other REST API requests for Azure Cosmos DB and try it out yourself! Have fun.
+### Offers
+
+The offer resource is represented by offers in the Cosmos DB resource model. Here’s an example of the URI: https://mydbaccount.documents.azure.com/offers. One of the interesting and very useful operations that you can do via [Replace an Offer](https://docs.microsoft.com/en-us/rest/api/cosmos-db/replace-an-offer) is changing (scaling UP or DOWN) RUs (throughput) and also changing an existing Azure Cosmos DB Manual throughput (set to a specific RU) to Autoscale Tier, and vice-versa (i.e. back from Autoscale Tier to Manual throughput RU). Before you execute the get an offer, list offers, query offers and eventually replace an existing offer, set your **Pre-request Script** to:
+
+```
+// Get the current date in UTCFormat and save it in parameter
+var now = new Date().toUTCString(); 
+pm.environment.set("utcDate", now); 
+
+// I need these to generate a token
+var verb = "GET"; 
+var resourceType = "offers"; 
+var resourceId = "-MNs"; 
+var text = (verb || "").toLowerCase() + "\n" + (resourceType || "").toLowerCase() + "\n" + (resourceId || "").toLowerCase() + "\n" + now.toLowerCase() + "\n" + "" + "\n"; 
+console.log(text);
+
+//Hash and Encode by using the masterkey.
+var key = CryptoJS.enc.Base64.parse(pm.variables.get("DocumentDBMasterKey")); 
+var signature = CryptoJS.HmacSHA256(text, key).toString(CryptoJS.enc.Base64); 
+var MasterToken = "master"; 
+var TokenVersion = "1.0"; 
+var authToken = encodeURIComponent("type=" + MasterToken + "&ver=" + TokenVersion + "&sig=" + signature);
+
+// Save it to parameter to use in HTTP header
+pm.environment.set("authToken", authToken);
+
+```
+Get an Offer: To retrieve an offer resource, perform a GET on the Offer resource.
+![Image15](media/getoffer.png)
+
+List Offers: To list the offers under the database account, perform a GET on the offers resource, that is, the offers URI path.
+![Image16](media/listoffer.png)
+
+In Replace an Offer, you can either choose to scale UP or DOWN manual throughput, OR alternatively, migrate an offer from **'manual throughput'** to **'autoscale'** and vice-versa.
+1. Increased Manual throughput from 400 RUs to 5000 RUs 
+![Image17](media/replaceoffer1.png)
+
+2. Decreased Manual throughput from 5000 RUs to 600 RUs 
+![Image18](media/replaceoffer2.png)
+
+3. Change from 'Autoscale Tier' to Manual RU
+![Image19](media/replaceoffer2.png)
+
+4. Change from Manual RU to 'Autoscale Tier'
+![Image20](media/replaceoffer2.png)
+
+In this HOWTO I have only covered 5 REST APIs, but you can use the guidance for setting up other REST API requests for Azure Cosmos DB and try it out yourself! Have fun.
 
 ## HTTP Status Codes
 Microsoft maintains a comprehensive list of all HTTP Status codes returned by the REST operations. You can access it [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb). The top 3 status codes which you may focus include:
 
 - **400: Bad request**. You should focus on the JSON/SQL/Jscript in the request body. An extra brace OR semi-colon OR closing bracket missing will result in 400 in most cases. 
-![Image15](media/postman9.png)
+![Image21](media/postman9.png)
 
 - **401: Unauthorized**: 401 is returned when the Authorization header is invalid for the requested resource.
-![Image16](media/postman10.png)
+![Image22](media/postman10.png)
 
 ## Troubleshooting Common Errors
 Postman provides a very stable environment for testing your REST APIs. If you're encountering errors, here's a CHECK LIST to check one by one:
@@ -346,7 +392,7 @@ Postman provides a very stable environment for testing your REST APIs. If you're
 7. Ensure you're correctly using the REQUIRED Headers. I once spent an entire night trying to troubleshoot a particular REST API which was failing and tinkered a 1000 places ony to find that one of the REQUIRED Headers is incorrectly set. So check, double-check and triple-check Headers values.
 8. In POST ops, check the format of JSON in Body. If incorrect, it will result in a 400 Error.
 9. If you receive a CORS Error after execution, then go to window bottom right-hand corner and click on 'Select Postman Agent', deselect 'Auto-select' and then click on Desktop Agent.
-![Image17](media/corserror.png)
+![Image23](media/corserror.png)
 
 ## Conclusion
 This HOWTO explores the steps for setting up and leveraging Postman API platform for performing operations on Microsoft's Azure Cosmos DB resources using REST APIs. The Azure Cosmos DB REST API provides programmatic access to Azure Cosmos DB resources to create, query, and delete databases, document collections, and documents. To perform operations on Azure Cosmos DB resources, you send HTTPS requests with a supported method: GET, POST, PUT, or DELETE to an endpoint that targets a resource collection or a specific resource. You are encouraged to explore all the Ops using Postman and provide feedback, if any.
