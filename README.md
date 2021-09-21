@@ -364,10 +364,10 @@ In Replace an Offer, you can either choose to scale UP or DOWN manual throughput
 ![Image18](media/replaceoffer2.png)
 
 3. Change from 'Autoscale Tier' to Manual RU
-![Image19](media/replaceoffer2.png)
+![Image19](media/replaceoffer3.png)
 
 4. Change from Manual RU to 'Autoscale Tier'
-![Image20](media/replaceoffer2.png)
+![Image20](media/replaceoffer4.png)
 
 In this HOWTO I have only covered 5 REST APIs, but you can use the guidance for setting up other REST API requests for Azure Cosmos DB and try it out yourself! Have fun.
 
