@@ -335,9 +335,9 @@ var now = new Date().toUTCString();
 pm.environment.set("utcDate", now); 
 
 // I need these to generate a token
-var verb = "<<put GET OR PUT based on operation>"; 
+var verb = "<<put GET OR PUT based on operation>>"; 
 var resourceType = "offers"; 
-var resourceId = "<put here _rid_offer>"; 
+var resourceId = "<<put here _rid_offer>>"; 
 var text = (verb || "").toLowerCase() + "\n" + (resourceType || "").toLowerCase() + "\n" + (resourceId || "").toLowerCase() + "\n" + now.toLowerCase() + "\n" + "" + "\n"; 
 console.log(text);
 
