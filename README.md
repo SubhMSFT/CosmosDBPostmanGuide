@@ -1,5 +1,5 @@
 # Microsoft Azure Cosmos DB REST APIs Postman Guide
-This white paper is a step-by-step guidance for setting up and testing Azure Cosmos DB resources using REST APIs with [Postman](https://www.postman.com/product/what-is-postman/) API platform.
+This white paper is a step-by-step guidance for setting up and testing Azure Cosmos DB Core SQL API resources using REST APIs with [Postman](https://www.postman.com/product/what-is-postman/) API platform.
 
 ![Image11](media/postman.png)
 
@@ -65,15 +65,15 @@ In short, which key Cosmos DB resources can be managed via REST APIs?
 Follow this [quickstart](https://docs.microsoft.com/en-us/azure/cosmos-db/sql/create-cosmosdb-resources-portal) to use the Azure portal to create an Azure Cosmos DB SQL API account. Once done, please note down the following key items which we will need in Postman:
 
 Go to Keys > "Read-write Keys" and note:
-- URI
-- PRIMARY KEY
+- [URI](https://docs.microsoft.com/en-us/rest/api/cosmos-db/cosmosdb-resource-uri-syntax-for-rest)
+- [PRIMARY KEY](https://docs.microsoft.com/en-us/azure/cosmos-db/database-security?tabs=sql-api#primary-keys)
 
 E.g from my account, I have noted down the 2 following items:
 ![Image1](media/Essentials.png)
 
 ## Setting up Postman
 
-If you have a Postman account already, simply [login](https://identity.getpostman.com/login). Otherwise, create an account and login. Once done, click on 'Workspaces' and create a new Workspace using "+ New Workspace". Example, I have created a workspace called, "My Workspace". Enter your specific workspace and then click on the 'Environments' tab.
+If you have an operational Postman account already, simply [login](https://identity.getpostman.com/login). Otherwise, create an account and login. Once done, click on 'Workspaces' and create a new Workspace using "+ New Workspace". Example, I have created a workspace called, "My Workspace". Enter your specific workspace and then click on the 'Environments' tab.
 
 ![Image2](media/Environments.png)
 
@@ -335,9 +335,9 @@ var now = new Date().toUTCString();
 pm.environment.set("utcDate", now); 
 
 // I need these to generate a token
-var verb = "GET"; 
+var verb = "<<put GET OR PUT based on operation>"; 
 var resourceType = "offers"; 
-var resourceId = "-MNs"; 
+var resourceId = "<put here _rid_offer>"; 
 var text = (verb || "").toLowerCase() + "\n" + (resourceType || "").toLowerCase() + "\n" + (resourceId || "").toLowerCase() + "\n" + now.toLowerCase() + "\n" + "" + "\n"; 
 console.log(text);
 
@@ -352,6 +352,11 @@ var authToken = encodeURIComponent("type=" + MasterToken + "&ver=" + TokenVersio
 pm.environment.set("authToken", authToken);
 
 ```
+In the above code snippet, ensure you edit and change 3 things:
+- verb should be set to operation type you wish to perform (PUT or GET etc.)
+- resourceId should be set to "rid-offer" value which is a system-generated resource ID of the offer. Please see [documentation here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/replace-an-offer) to find out your own database's rid-offer.
+- when performing hash & encoding, you need to replace MasterKey name with whatever you have called it. E.g. in my case, it is 'DocumentDBMasterKey'.
+
 Get an Offer: To retrieve an offer resource, perform a GET on the Offer resource.
 ![Image15](media/getoffer.png)
 
