@@ -378,7 +378,7 @@ In Replace an Offer, you can either choose to scale UP or DOWN manual throughput
 
 In this HOWTO I have only covered 5 REST APIs, but you can use the guidance for setting up other REST API requests for Azure Cosmos DB and try it out yourself! Have fun.
 
-[ImageMinions](media/minions.gif)
+![](media/minions.gif)
 
 ## HTTP Status Codes
 Microsoft maintains a comprehensive list of all HTTP Status codes returned by the REST operations. You can access it [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb). The top 3 status codes which you may focus include:
