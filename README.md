@@ -264,7 +264,7 @@ Now ensure all is saved and finally, click on the **SEND** button. If you have c
 
 ![Image9](media/postman4.png)
 
-Before you move on, here's 5 things you should explore:
+Before you move on, here's 4 things you should explore:
 
 1. Hover your mouse-pointer over {{authToken}} and {{RFC1123time}}. You shall see that both now have values generated. Do not tinker with them.
 
