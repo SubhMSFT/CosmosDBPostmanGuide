@@ -381,13 +381,19 @@ In this HOWTO I have only covered 5 REST APIs, but you can use the guidance for 
 ![](media/minions.gif)
 
 ## HTTP Status Codes
-Microsoft maintains a comprehensive list of all HTTP Status codes returned by the REST operations. You can access it [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb). The top 3 status codes which you may focus include:
+Microsoft maintains a comprehensive list of all HTTP Status codes returned by the REST operations. You can access it [here](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb). Here's some common Error/Status Codes and reasons that you could encounter:
 
-- **400: Bad request**. You should focus on the JSON/SQL/Jscript in the request body. An extra brace OR semi-colon OR closing bracket missing will result in 400 in most cases. 
+- **400: Bad Request**. You should focus on the JSON/SQL/Jscript in the request body. An extra brace OR semi-colon OR closing bracket missing will result in 400 in most cases. 
 ![Image21](media/postman9.png)
 
 - **401: Unauthorized**: 401 is returned when the Authorization header is invalid for the requested resource.
 ![Image22](media/postman10.png)
+
+- **400: Bad Request**: I have a FamilyContainer (ID) in FamilyDatabase (Database) which is in 4000 (Max throughput) in Autoscale Tier. But I tried scaling UP to 40,000 RUs using Manual Scale-up REST API call. It will fail giving an Error 400. In other words, you cannot scale UP or DOWN via Manual REST API call if collection/db is set to Autoscale.
+![Image22a](media/postman11.png)
+
+- **400: Bad Request**: I have a FamilyContainer (ID) in FamilyDatabase (Database) which is in 4000 (Max throughput) in Autoscale Tier. I fired a scale UP of 80,000 from 40,000 which went through, but within 1 second, I again fired another 40,000 RUs scale UP. It will fail giving an Error 400. In other words, you will need to give time for the 1st scale UP operation to complete before firing another scale UP or DOWN. 
+- ![Image22b](media/postman12.png)
 
 ## Troubleshooting Common Errors
 Postman provides a very stable environment for testing your REST APIs. If you're encountering errors, here's a CHECK LIST to check one by one:
