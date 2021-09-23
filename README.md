@@ -13,7 +13,7 @@ This document provides guidance on how to setup Postman for testing and working 
 | --- | --- | --- | --- |
 | [Subhasish Ghosh](https://www.linkedin.com/in/sghosh2011/) | Cloud Solution Architect – Data &amp; AI, <br/> Microsoft EC-US, Global CSU | Original | 20 Sept 2021 |
 | [Sajeetharan Sinnathurai](https://www.linkedin.com/in/sajeetharan/) | Senior Program Manager, Azure Cosmos DB <br/> Microsoft | Pre-request Script </br> [Offers](https://docs.microsoft.com/en-us/rest/api/cosmos-db/offers) REST API Ops | 21 Sept 2021 |
-| [Subhasish Ghosh](https://www.linkedin.com/in/sghosh2011/) | Cloud Solution Architect – Data &amp; AI, <br/> Microsoft EC-US, Global CSU | Added 2 new HTTP Status Codes scnenarios for Code 400 | 23 Sept 2021 |
+| [Subhasish Ghosh](https://www.linkedin.com/in/sghosh2011/) | Cloud Solution Architect – Data &amp; AI, <br/> Microsoft EC-US, Global CSU | Added 2 new HTTP Status </br> Codes scnenarios for Code 400 | 23 Sept 2021 |
 
 # Contents
 
